@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Princess Hilary Hidden Objects — Royal Hidden Object Adventure</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #2d1f2b;
+            --plum: #4a2c5a;
+            --cream: #fff9f4;
+            --blush: #f5e6eb;
+            --rose: #c17b9e;
+            --gold: #b8860b;
+            --gold-light: #d4a84b;
+            --sage: #6b7f6a;
+        }
+
+        body {
+            font-family: 'Nunito Sans', system-ui, sans-serif;
+            background: var(--cream);
+            min-height: 100vh;
+            color: var(--ink);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(193, 123, 158, 0.18) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 100% 80%, rgba(184, 134, 11, 0.1) 0%, transparent 45%),
+                radial-gradient(ellipse 50% 35% at 0% 100%, rgba(74, 44, 90, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .pattern {
+            position: fixed;
+            inset: 0;
+            opacity: 0.35;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5l4 8 9 1-6 6 2 9-9-4-9 4 2-9-6-6 9-1z' fill='none' stroke='%23b8860b' stroke-width='0.4' opacity='0.25'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 1;
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 32px 22px 48px;
+        }
+
+        .crown {
+            text-align: center;
+            font-size: 2.4rem;
+            line-height: 1;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 2px 4px rgba(184, 134, 11, 0.25));
+        }
+
+        .ribbon {
+            text-align: center;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 0.95rem;
+            font-style: italic;
+            font-weight: 500;
+            color: var(--rose);
+            letter-spacing: 0.12em;
+            margin-bottom: 20px;
+        }
+
+        .frame {
+            border: 2px solid rgba(184, 134, 11, 0.45);
+            border-radius: 4px 4px 24px 4px;
+            background: linear-gradient(165deg, #ffffff 0%, var(--blush) 100%);
+            box-shadow:
+                0 4px 24px rgba(74, 44, 90, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            padding: 32px 28px 28px;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(1.75rem, 5vw, 2.25rem);
+            font-weight: 700;
+            color: var(--plum);
+            text-align: center;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        h1 .accent {
+            color: var(--gold);
+        }
+
+        .tagline {
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--sage);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .scene {
+            height: 120px;
+            border-radius: 16px;
+            background:
+                linear-gradient(180deg, rgba(255, 249, 244, 0) 0%, var(--blush) 100%),
+                linear-gradient(135deg, #e8d4e0 0%, #c4a5c0 40%, #8b6b8a 100%);
+            border: 1px solid rgba(184, 134, 11, 0.25);
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scene::after {
+            content: '✦';
+            position: absolute;
+            left: 12%;
+            top: 22%;
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+            animation: tw1 3s ease-in-out infinite;
+        }
+
+        .sparkles {
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.4) 0, transparent 2px),
+                radial-gradient(circle at 75% 45%, rgba(255, 255, 255, 0.35) 0, transparent 2px),
+                radial-gradient(circle at 50% 70%, rgba(255, 255, 255, 0.3) 0, transparent 2px);
+            animation: tw2 4s ease-in-out infinite;
+        }
+
+        @keyframes tw1 {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes tw2 {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 22px;
+        }
+
+        .badges span {
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.85);
+            color: var(--plum);
+            border: 1px solid rgba(184, 134, 11, 0.35);
+        }
+
+        .lead {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: #3d2f38;
+            margin-bottom: 18px;
+        }
+
+        .lead strong {
+            color: var(--plum);
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.25rem;
+            color: var(--gold);
+            margin: 24px 0 12px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features li {
+            position: relative;
+            padding: 8px 0 8px 24px;
+            line-height: 1.6;
+            font-size: 0.98rem;
+            color: #3d2f38;
+        }
+
+        .features li::before {
+            content: '❋';
+            position: absolute;
+            left: 0;
+            color: var(--gold-light);
+            font-size: 0.75rem;
+            top: 10px;
+        }
+
+        .outro {
+            font-size: 0.98rem;
+            line-height: 1.7;
+            color: #3d2f38;
+            margin-top: 18px;
+        }
+
+        .cta {
+            display: block;
+            text-align: center;
+            margin-top: 28px;
+            padding: 16px 24px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.04em;
+            color: #fff;
+            background: linear-gradient(165deg, var(--plum) 0%, #6b3d7a 100%);
+            border: 2px solid rgba(184, 134, 11, 0.5);
+            box-shadow: 0 8px 24px rgba(74, 44, 90, 0.25);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(74, 44, 90, 0.3);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--rose);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: var(--plum);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .frame { padding: 24px 18px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pattern" aria-hidden="true"></div>
+    <div class="wrap">
+        <p class="crown" aria-hidden="true">👑</p>
+        <p class="ribbon">A storybook quest for sharp eyes</p>
+        <div class="frame">
+            <h1>Princess Hilary <span class="accent">Hidden Objects</span></h1>
+            <p class="tagline">Hidden object · Royal adventure</p>
+
+            <div class="scene" aria-hidden="true"><span class="sparkles"></span></div>
+
+            <div class="badges">
+                <span>Free to play</span>
+                <span>Puzzle</span>
+                <span>iPhone &amp; iPad</span>
+                <span>Ages 4+</span>
+            </div>
+
+            <p class="lead"><strong>Explore magical kingdoms with Princess Hilary.</strong> Find hidden objects, unlock beautiful levels, and enjoy a relaxing yet challenging adventure full of surprises. Step into enchanted scenes, search for treasures and mysterious items, and travel through royal castles, dreamy landscapes, and storybook settings while you train your observation.</p>
+
+            <h2>What you will find</h2>
+            <ul class="features">
+                <li>Princess-themed hand-painted environments and cozy, magical backdrops</li>
+                <li>Hundreds of objects to discover across a growing set of levels</li>
+                <li>Calm, focused gameplay with gentle difficulty that ramps up as you go</li>
+                <li>Simple touch controls, hints when you need a nudge, and smooth play on phone or tablet</li>
+                <li>Perfect if you like cozy hidden-object play or a light brain challenge in short sessions</li>
+            </ul>
+
+            <p class="outro">Whether you want to unwind with a few scenes or push for a perfect find list, <strong>Princess Hilary Hidden Objects</strong> blends fairy-tale charm with the satisfaction of the search. Download on the App Store and begin your royal hidden-object journey.</p>
+
+            <a href="https://apps.apple.com/us/app/princess-hilary-hidden-objects/id1031846477?uo=4" class="cta" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
+        </div>
+
+        <div class="footer">
+            <p><a href="privacy.html">Privacy information</a></p>
+        </div>
+    </div>
+</body>
+
+</html>
